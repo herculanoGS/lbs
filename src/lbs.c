@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
 
   int n = strlen(str2); // get length of input string
 
-  printf("\nLength is: %d\n", longestPalSubstr(str2, n));
+  printf("\nLength is: %d\n", longestPalSubstr(str2));
 
   return 0;
 }
