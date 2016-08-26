@@ -78,10 +78,15 @@ int main(int argc, char **argv) {
 
   char str2[1000];
 
+  char *arquivo = "sampleinput.txt";
+
+  if(argc > 1)
+    arquivo = argv[1];
+
   memset(str2, ' ', sizeof(str2));
   str2[999] = '\0';
 
-  FILE *f = fopen("sampleinput.txt", "r");
+  FILE *f = fopen(arquivo, "r");
   fread(str2, 999, sizeof(char), f);
 
   int n = strlen(str2); // get length of input string
