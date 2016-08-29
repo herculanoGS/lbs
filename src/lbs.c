@@ -76,7 +76,7 @@ int longestPalSubstr(char *str) {
 // Driver program to test above functions
 int main(int argc, char **argv) {
 
-  char str2[1000];
+  char str2[3000];
 
   char *arquivo = "sampleinput.txt";
 
@@ -84,10 +84,10 @@ int main(int argc, char **argv) {
     arquivo = argv[1];
 
   memset(str2, ' ', sizeof(str2));
-  str2[999] = '\0';
+  str2[2999] = '\0';
 
   FILE *f = fopen(arquivo, "r");
-  fread(str2, 999, sizeof(char), f);
+  fread(str2, 2999, sizeof(char), f);
 
   int n = strlen(str2); // get length of input string
 
