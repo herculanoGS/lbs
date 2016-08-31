@@ -5,6 +5,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#define true 1
+#define false 0
+#define bool int
+
 // A utility function to print a substring str[low..high]
 void printSubStr(char* str, int low, int high) {
   int i;
@@ -17,27 +21,32 @@ void printSubStr(char* str, int low, int high) {
 // It also returns the length of the longest palindrome
 int longestPalSubstr(char *str) {
 
-	int n = strlen(str); // get length of input string
+  int i, k;
+  // int n = strlen(str); // get length of input string
 
-  printf("string length: %d\n", n);
-
-  int i;
   // table[i][j] will be false if substring str[i..j]
   // is not palindrome.
   // Else table[i][j] will be true
-  int table[n][n];
-  memset(table, 0, sizeof(table));
+  bool table[2999][2999];
+  i = 3000;
+  while (i--) {
+    k = 3000;
+    while (k--) {
+      table[i][k] = 0;
+    }
+  }
+  //memset(table, 0, sizeof(table));
 
   // All substrings of length 1 are palindromes
   int maxLength = 1;
-  for (i = 0; i < n; ++i)
-    table[i][i] = 1;
+  for (i = 0; i < 3000; ++i)
+    table[i][i] = true;
 
   // check for sub-string of length 2.
   int start = 0;
-  for (i = 0; i < n - 1; ++i) {
+  for (i = 0; i < 2999; ++i) {
     if (str[i] == str[i + 1]) {
-      table[i][i + 1] = 1;
+      table[i][i + 1] = true;
       start = i;
       maxLength = 2;
     }
@@ -45,10 +54,9 @@ int longestPalSubstr(char *str) {
 
   // Check for lengths greater than 2. k is length
   // of substring
-  int k;
-  for (k = 3; k <= n; ++k) {
+  for (k = 3; k <= 3000; ++k) {
     // Fix the starting index
-    for (i = 0; i < n - k + 1; ++i) {
+    for (i = 0; i < 3000 - k + 1; ++i) {
       // Get the ending index of substring from
       // starting index i and length k
       int j = i + k - 1;
@@ -57,7 +65,7 @@ int longestPalSubstr(char *str) {
       // jth index iff str[i+1] to str[j-1] is a
       // palindrome
       if (table[i + 1][j - 1] && str[i] == str[j]) {
-        table[i][j] = 1;
+        table[i][j] = true;
 
         if (k > maxLength) {
           start = i;
@@ -74,24 +82,11 @@ int longestPalSubstr(char *str) {
 }
 
 // Driver program to test above functions
-int main(int argc, char **argv) {
-
-  char str2[3000];
-
-  char *arquivo = "sampleinput.txt";
-
-  if(argc > 1)
-    arquivo = argv[1];
-
-  memset(str2, ' ', sizeof(str2));
-  str2[2999] = '\0';
-
-  FILE *f = fopen(arquivo, "r");
-  fread(str2, 2999, sizeof(char), f);
-
-  int n = strlen(str2); // get length of input string
-
-  printf("\nLength is: %d\n", longestPalSubstr(str2));
-
+int main() {
+  char str[3000];
+  int i = 3000;
+  while (i--)
+    str[i] = ' ';
+  printf("\nLength is: %d\n", longestPalSubstr(str));
   return 0;
 }
