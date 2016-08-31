@@ -1,92 +1,84 @@
-// A dynamic programming solution for longest palindr.
-// This code is adopted from following link
-// http://www.leetcode.com/2011/11/longest-palindromic-substring-part-i.html
-
 #include <stdio.h>
-#include <string.h>
 
-#define true 1
-#define false 0
-#define bool int
+struct lohi {
+  int lo;
+  int hi;
+  struct lohi *next;
+};
 
-// A utility function to print a substring str[low..high]
-void printSubStr(char* str, int low, int high) {
+struct lohi lohi_create(int lo, int hi, struct lohi *tail) {
+  struct lohi head;
+  head.lo = lo;
+  head.hi = hi;
+  head.next = tail ? tail : NULL;
+  return head;
+}
+
+void lohi_print(struct lohi *res, char buff[]) {
+
   int i;
-  for (i = low; i <= high; ++i)
-    printf("%c", str[i]);
+
+  while (res != 0) {
+    printf("lo: [%d] hi: [%d] pal: [", res->lo, res->hi);
+    int i = res->lo - 1;
+    while (++i <= res->hi)
+      printf("%c", buff[i]);
+    printf("]\n");
+    res = res->next;
+  }
 }
 
-// This function prints the longest palindrome substring
-// of str[].
-// It also returns the length of the longest palindrome
-int longestPalSubstr(char *str) {
-
-  int i, k;
-  // int n = strlen(str); // get length of input string
-
-  // table[i][j] will be false if substring str[i..j]
-  // is not palindrome.
-  // Else table[i][j] will be true
-  bool table[2999][2999];
-  i = 3000;
-  while (i--) {
-    k = 3000;
-    while (k--) {
-      table[i][k] = 0;
-    }
+void chck_pal(int *lo, int *hi, char buff[], int len, struct lohi *head) {
+  while (buff[*lo] == buff[*hi] && *lo > 0 && *hi < len) {
+    (*lo)--;
+    (*hi)++;
   }
-  //memset(table, 0, sizeof(table));
-
-  // All substrings of length 1 are palindromes
-  int maxLength = 1;
-  for (i = 0; i < 3000; ++i)
-    table[i][i] = true;
-
-  // check for sub-string of length 2.
-  int start = 0;
-  for (i = 0; i < 2999; ++i) {
-    if (str[i] == str[i + 1]) {
-      table[i][i + 1] = true;
-      start = i;
-      maxLength = 2;
-    }
+  (*lo)++;
+  (*hi)--;
+  if (*hi - *lo > head->hi - head->lo) {
+    head->lo = *lo;
+    head->hi = *hi;
+    lohi_print(head, buff);
   }
-
-  // Check for lengths greater than 2. k is length
-  // of substring
-  for (k = 3; k <= 3000; ++k) {
-    // Fix the starting index
-    for (i = 0; i < 3000 - k + 1; ++i) {
-      // Get the ending index of substring from
-      // starting index i and length k
-      int j = i + k - 1;
-
-      // checking for sub-string from ith index to
-      // jth index iff str[i+1] to str[j-1] is a
-      // palindrome
-      if (table[i + 1][j - 1] && str[i] == str[j]) {
-        table[i][j] = true;
-
-        if (k > maxLength) {
-          start = i;
-          maxLength = k;
-        }
-      }
-    }
-  }
-
-  printf("Longest palindrome substring is: ");
-  printSubStr(str, start, start + maxLength - 1);
-
-  return maxLength; // return length of LPS
+  return;
 }
 
-// Driver program to test above functions
-int main() {
-  char str[3000];
-  int i = 3000;
-  while (i--)
-    str[i] = ' ';
-  printf("\nLength is: %d\n", longestPalSubstr(str));
+struct lohi find_pals(char buff[], int len) {
+
+  struct lohi head = lohi_create(0, 1, NULL);
+  int lo;
+  int hi;
+  int i = len;
+  while (i-- > 1) {
+    lo = i;
+    hi = i;
+    chck_pal(&lo, &hi, buff, len, &head);
+
+    lo = i - 1;
+    hi = i;
+    if (buff[lo] == buff[hi])
+      chck_pal(&lo, &hi, buff, len, &head);
+  }
+  return head;
+}
+
+int main(int argc, char **argv) {
+
+  char *arq = "sampleinput3.txt";
+
+  if (argc == 2)
+    arq = argv[1];
+
+  FILE *f = fopen(arq, "r");
+
+  char buff[3001];
+
+  fread(buff, 3000, sizeof(char), f);
+  buff[3000] = '\0';
+
+  struct lohi r = find_pals(buff, 3000);
+  struct lohi *res = &r;
+  lohi_print(res, buff);
+
   return 0;
 }
