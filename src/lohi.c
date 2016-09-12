@@ -9,6 +9,7 @@ struct lohi lohi_create(int lo, int hi, struct lohi *tail) {
   return head;
 }
 
+
 void lohi_print(struct lohi *res, char buff[]) {
 
   int i;
