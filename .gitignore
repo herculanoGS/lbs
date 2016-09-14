@@ -7,7 +7,6 @@
 *.sdb
 *.cmf
 *.cof
-*.hex
 *.hxl
 *.obj
 *.p1
