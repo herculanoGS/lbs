@@ -1,2 +1,7 @@
 *.o
 /lps
+*.d
+*.p1
+*.as
+*.pre
+*.sdb

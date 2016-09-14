@@ -4,6 +4,11 @@
 # Authors: Herculano Santos
 #          Leonardo Silveira
 #
+# exports needed for PIC
+# CC=picc18
+# CFLAGS="--chip=18F4550"
+# LDFLAGS= to be discovered 
+#
 
 BINARY=../lps
 OBJS=lohi.o pal.o main.o
@@ -11,10 +16,10 @@ OBJS=lohi.o pal.o main.o
 all: $(BINARY)
 
 $(BINARY): $(OBJS)
-	$(CC) -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^
 	
 %.o:%.c
-	$(CC) -c $<
+	$(CC) $(CFLAGS) -c $^
 	
 clean: 
 	rm -rf *.o
