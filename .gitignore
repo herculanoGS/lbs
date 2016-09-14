@@ -5,3 +5,13 @@
 *.as
 *.pre
 *.sdb
+*.cmf
+*.cof
+*.hex
+*.hxl
+*.obj
+*.p1
+*.pre
+*.lst
+startup.*
+*.sym

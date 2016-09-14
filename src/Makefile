@@ -4,22 +4,30 @@
 # Authors: Herculano Santos
 #          Leonardo Silveira
 #
-# exports needed for PIC
+# exports needed for PIC18
 # CC=picc18
 # CFLAGS="--chip=18F4550"
-# LDFLAGS= to be discovered 
 #
 
 BINARY=../lps
-OBJS=lohi.o pal.o main.o
 
 all: $(BINARY)
 
-$(BINARY): $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
-	
-%.o:%.c
-	$(CC) $(CFLAGS) -c $^
-	
+$(BINARY): main.c
+	$(CC) $(CFLAGS) main.c
+
 clean: 
 	rm -rf *.o
+	rm -rf *.d
+	rm -rf *.p1
+	rm -rf *.as
+	rm -rf *.pre
+	rm -rf *.sdb
+	rm -rf *.cmf
+	rm -rf *.cof
+	rm -rf *.hex
+	rm -rf *.hxl
+	rm -rf *.obj
+	rm -rf *.sym
+	rm -rf startup.*
+	
