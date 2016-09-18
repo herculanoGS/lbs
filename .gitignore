@@ -14,3 +14,4 @@
 *.lst
 startup.*
 *.sym
+.vscode

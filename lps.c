@@ -1,5 +1,10 @@
+#include <stdio.h>
 
-#include "LPS.h"
+struct lohi {
+  int lo;
+  int hi;
+  struct lohi *next;
+};
 
 struct lohi lohi_create(int lo, int hi, struct lohi *tail) {
   struct lohi head;
@@ -9,14 +14,11 @@ struct lohi lohi_create(int lo, int hi, struct lohi *tail) {
   return head;
 }
 
-
 void lohi_print(struct lohi *res, char buff[]) {
-
-  int i;
 
   while (res != 0) {
     printf("lo: [%d] hi: [%d] pal: [", res->lo, res->hi);
-    i = res->lo - 1;
+    int i = res->lo - 1;
     while (++i <= res->hi)
       printf("%c", buff[i]);
     printf("]\n");
@@ -60,16 +62,16 @@ struct lohi find_pals(char buff[], int len) {
 
 int main(int argc, char **argv) {
 
-  // char *arq = "sampleinput3.txt";
-  static char buff[301];
-  // FILE *f;
+  char *arq = "sampleinput3.txt";
 
-  // if (argc == 2)
-  //   arq = argv[1];
+  if (argc == 2)
+    arq = argv[1];
 
-  // f = fopen(arq, "r");
+  FILE *f = fopen(arq, "r");
 
-  // fread(buff, 3000, sizeof(char), f);
+  char buff[3001];
+
+  fread(buff, 3000, sizeof(char), f);
   buff[3000] = '\0';
 
   struct lohi r = find_pals(buff, 3000);
