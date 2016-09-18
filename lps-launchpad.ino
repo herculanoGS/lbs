@@ -1,7 +1,6 @@
 
 void setup() {
-  // put your setup code here, to run once:  
-  Serial.begin(9600);      // open the serial port at 9600 bps:  
+  Serial.begin(9600);
 }
 
 String palindrome;
