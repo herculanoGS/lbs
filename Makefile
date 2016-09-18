@@ -23,4 +23,4 @@ $(BINARY): $(OBJS)
 	$(CC) $(CFLAGS) -c $^
 	
 clean: 
-	rm -rf *.o lps
+	rm -rf *.o lps *.d *.p1 *.pre
