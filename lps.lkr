@@ -1,0 +1,2 @@
+# linker script pra criar um codepage que caiba o array de 3001 posições
+CODEPAGE NAME=BUGDATA START=0x0 END=0x1000

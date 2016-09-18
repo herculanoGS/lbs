@@ -7,20 +7,13 @@
 # Configurable makefile intended to allow changing the compiler
 # 
 # exports needed for PIC (for example)
-# CC=picc18
-# CFLAGS="--chip=18F4550"
-#
+CC=picc18
+CFLAGS="--chip=18F4550"
 
-BINARY=lps
-OBJS=lps.o
+all: lps.hex
 
-all: $(BINARY)
+lps.hex: lps.c
+	$(CC) $(CFLAGS) lps.c
 
-$(BINARY): $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
-	
-%.o:%.c
-	$(CC) $(CFLAGS) -c $^
-	
 clean: 
 	rm -rf *.o lps *.d *.p1 *.pre
