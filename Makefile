@@ -4,7 +4,9 @@
 # Authors: Herculano Santos
 #          Leonardo Silveira
 #
-# exports needed for PIC
+# Configurable makefile intended to allow changing the compiler
+# 
+# exports needed for PIC (for example)
 # CC=picc18
 # CFLAGS="--chip=18F4550"
 #
