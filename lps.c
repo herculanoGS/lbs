@@ -60,7 +60,7 @@ struct lohi find_pals(char buff[], int len) {
   return head;
 }
 
-char buff[3001];
+const char buff[3001];
 
 int main(int argc, char **argv) {
 
@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
 
   
   // fread(buff, 3000, sizeof(char), f);
-  buff[3000] = '\0';
+  //buff[3000] = '\0';
 
   struct lohi r = find_pals(buff, 3000);
   struct lohi *res = &r;
