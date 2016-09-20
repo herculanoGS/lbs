@@ -8,7 +8,7 @@
 # 
 # exports needed for PIC (for example)
 CC=picc18
-CFLAGS="--chip=18F4550"
+CFLAGS="--chip=18F4550" "--codeoffset=800"
 
 all: lps.hex
 
@@ -17,3 +17,8 @@ lps.hex: lps.c
 
 clean: 
 	rm -rf *.o lps *.d *.p1 *.pre
+
+clr:
+	rm -rf *.hex
+	rm -rf *.o lps *.d *.p1 *.pre
+
