@@ -1,4 +1,7 @@
+
+#include <xc.h>
 #include <stdio.h>
+#include <stdint.h>
 
 struct lohi {
   int lo;
@@ -60,22 +63,21 @@ struct lohi find_pals(char buff[], int len) {
   return head;
 }
 
-const char *buff = "asdfghjqwertymnbvcxzxcvbnmlfghgfhgfhetereh";
+const char *buff = "notnoaaabbbasdfghjkllkjhgfdsaqbxbhacguyasdfghjklasdfghjkllkjhgfdsagaaasssdddfffggghhhhhhgggfffdddsssaaacdbhvw vsnjsvhivbkjfw nvhbjqebhqefnwbkjwfehgjwknwnvkbhvwhbkwfen,vwbjkvwhkjwfenwvkhwfeukfwnwhufw47hf4wkneqnuqefekfekuhfqehkfqewkfqwekhbfwqyewhkwefhufqiuygaaabbbasdfghjkllkjhgfdsaqbxbhacguycdbhvw vsnjsvhivbkjfw nvhbjqebhqefnwbkjwfehgjwknwnvkbhvwhbkwfen,vwbjkvwhkjwfenwvkhwfeukfwnwhufw47hf4wkneqnuqefekfekuhfqehkfqewkfqwekhbfwqyewhkwefhufqiuygaaabbbasdfghjkllkjhgfdsaqbxbhacguycdbhvw vsnjsvhivbkjfw nvhbjqebhqefnwbkjwfehgjwknwnvkbhvwhbkwfen,vwbjkvwhkjwfenwvkhwfeukfwnwhufw47hf4wkneqnuqefekfekuhfqehkfqewkfqwekhbfwqyewhkwefhufqiuygaaabbbasdfghjkllkjhgfdsaqbxbhacguycdbhvw vsnjsvhivbkjfw nvhbjqebhqefnwbkjwfehgjwknwnvkbhvwhbkwfen,vwbjkvwhkjwfenwvkhwfeukfwnwhufw47hf4wkneqnuqefekfekuhfqehkfqewkfqwekhbfwqyewhkwefhufqiuygaaabbbasdfghjkllkjhgfdsaqbxbhacguycdbhvw vsnjsvhivbkjfw nvhbjqebhqefnwbkjwfehgjwknwnvkbhvwhbkwfen,vwbjkvwhkjwfenwvkhwfeukfwnwhufw47hf4wkneqnuqefekfekuhfqehkfqewkfqwekhbfwqyewhkwefhufqiuygaaabbbasdfghjkllkjhgfdsaqbxbhacguycdbhvw vsnjsvhivbkjfw nvhbjqebhqefnwbkjwfehgjwknwnvkbhvwhbkwfen,vwbjkvwhkjwfenwvkhwfeukfwnwhufw47hf4wkneqnuqefekfekuhfqehkfqewkfqwekhbfwqyewhkwefhufqiuyglhflkjdhlkfjahslkjfhlkjfahklsjfhalksjfhkjshflkasjhflkjhfdlkjhflkajsdhflkjashdlkfjahslkdfjhlkasdjfhlkasjdfhlkajsdfhlkasjdfhlksajfhlkajsfhlksdajfhlkjasdfhlkasdjfhlkjdfhlkaj,cv,xcnbv,mbd,mvbqkjgfeqiugdfwrkkdgjfbowelrkgdjfvrwek,jdfhlek.djhfvlwke.jsdfl.kjsdhbflvkjds,bvlk.j,hsdfl.jehdsfl.rwjhdsgl.kvrhdglkjehdsglvk.jgdsblkjgdhgflke.jsfdhlqw.elsafhlqewjfhlewkjsdgfblerkjdsbfvkreq,jsbdfkqk,jgadsflqkjwgdfslqkewjdsflkq.ejwgasfliuqekgjsdbflckqbsdxc,mfgwscgo2f3wydhlrtgwvdhsalfjçhxbshhvsdahflkjweqiorbevdhskfweliogeuwvudsahkfwqçgowebivdhbs ghbfdvihsbwekrlt4ogbufyfgrhnh jfdvshferhfuivbgjtreiwsuhgdrhuisdhfbgvlasejhrjiewushdbnrek5btjreidheeirhdisuhrhdisijxndkwlskajjksoajhsisowerhfdkowerfhcbnjfvchdbfjvocdhbfvhcidhfbvcdirhfbvcnjrbgvcjdjchbxsoxdjsdbnklckxjsbnsdkwrbjfdijnejiwjhdciijhbefbvjiofejfbb jfoepoejfvbdiowodijvbdwoodjvcdiowdjhvcidososkjcnsoosdjcvhidowidjhvidoidjvhhdioidjcvhcidoidjhviowidfvhdosdcvhgtr5neod0fghijgrew0sxijdb rtjfoc-xswo3ehrvtg bfdkspdokfjvnbnjcidosweirjtgbvhjcixsuwhgvazxycuviogltreskjhbxcfbjdodcvjndsoerifvcxushefiovcxsjeidocxoswkjedxsoejfvjckoderjtgnvckldeoirjtngfcmlekrnfcoeirjficodeijrhbfdnklerghvbc deoprtgvicudhwertogpbpvcdjwhhuritg0bvfori4jh5tug0friu5tgfioritjgfdoerijfdoekrjfdijerhfjdjhrfirhfihrfidrfjdjkgvkctgjobvjdfvpciuwlhsvçdalwelgdsdawqteigsd.twqugsdjbewjojvcsdjbweudsjkekwjisduvhewjthubfdhewtguifsdehgfudeuwidsewifgeir3ifrjrfihefygefyegyfgerugrhgjigothnbqsqwdcdefvfrgbgthnujmkilpçplkiujmjhyhbgrfvfefghnjijhgthjklpl,lçplmnjiuhbvgtygvcdrtfdrdswsaqwdxsefcderfgvfthbyumjio.lopç;.,mjhgvdwsxsqazsxcddfvtghmjk,ol.çpççpç.l.lik,ujmjyhnhyhnhyhntgbgrfvrffefvedcdexqazaq	\Awkdjkwdjwjdwojfioeifjiofihjdojedojefojefiowjdjcoowcojfko4jgiojiofvjioh59uhgy8ygrgyfc8duhehfvcdjjckjrjeopdfjht4jedfogjt4eodoijt4odcofijrewospkfreodojfoitgiofoeijwsoorwsgt4esofoeijwsoorwsgt4esokertgvlkmewisdigtrjewkodfijwmlerofgijtrekrgg";
+
+void putch(char c){
+  while(!TXIF) continue;
+  TXREG = c;
+}
 
 int main(int argc, char **argv) {
-
-  // char *arq = "sampleinput3.txt";
-
-  // if (argc == 2)
-  //   arq = argv[1];
-
-  // FILE *f = fopen(arq, "r");
-
   
-  // fread(buff, 3000, sizeof(char), f);
-  //buff[3000] = '\0';
+  TRISC = 0xFF;
+  RCSTA = 0xB0;
+  TXSTA = 0x24;
+  SPBRG = 0x12;
 
-  struct lohi r = find_pals(buff, 42);
+  struct lohi r = find_pals(buff, 3013);
   struct lohi *res = &r;
   lohi_print(res, buff);
 
