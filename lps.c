@@ -60,6 +60,7 @@ struct lohi find_pals(char buff[], int len) {
   return head;
 }
 
+
 int main(int argc, char **argv) {
 
   char *arq = "sampleinput3.txt";
