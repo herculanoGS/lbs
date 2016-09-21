@@ -72,6 +72,7 @@ void putch(char c){
 
 int main(int argc, char **argv) {
   
+  // not complete, wip
   TRISC = 0xFF;
   RCSTA = 0xB0;
   TXSTA = 0x24;
